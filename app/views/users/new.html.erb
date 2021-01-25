@@ -1,0 +1,25 @@
+<div class="signup-form">
+    Sign Up
+    <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
+            <div class="errors">
+                <h3>The following needs to be corrected:</h3><br>
+                <ul>
+                    <% @user.errors.full_messages.each do |mssg| %>
+                        <li><p><%= mssg %></p></li>
+                    <% end %>
+                </ul>
+            </div> 
+        <% end %>
+            <%= f.label :email %>
+            <%= f.text_field :email %><br>
+
+            <%= f.label :password %>
+            <%= f.password_field :password %><br>
+
+            <%= f.label :password_confirmation, "Confirm Password" %>
+            <%= f.password_field :password_confirmation %><br>
+
+            <%= f.submit "Sign Up" %>
+    <% end %>
+</div>
