@@ -1,3 +1,45 @@
 .login-form {
-    background-color: black;
+    position: absolute;
+    text-align: center;
+    top:  42%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 350px;
+    height: 300px;
+}
+
+.login-header {
+    display: flex;
+    background-color: rgb(120, 95, 161);
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    height: 20%;
+    border-radius: 15px 15px 0 0;
+    margin-bottom: 3%;
+}
+
+.field {
+    margin: 10px 0 15px 0;
+    font-size: 20px;
+}
+
+input[type=text], input[type=password] {
+    height: 40px;
+    width: 220px;
+    font-size: 15px;
+}
+
+input[type=submit] {
+    position: relative;
+    height: 20%;
+    left: 20px;
+    height: 40px;
+    width: 70px
+}
+
+input[type=submit]:hover {
+    background-color: rgb(199, 183, 224);
 }

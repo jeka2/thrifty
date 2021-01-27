@@ -21,5 +21,13 @@ private
         redirect_to root_path if logged_in?
     end
 
+    def set_flash_alert_for(obj)
+        flash[:alert] = obj.errors.full_messages
+    end
+
+    def remove_flash_alert
+        flash[:alert] = nil
+    end
+
     helper_method :current_user
 end

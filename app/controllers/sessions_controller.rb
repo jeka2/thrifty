@@ -12,12 +12,15 @@ class SessionsController < ApplicationController
 
             redirect_to root_path
         else    
+            set_flash_alert_for(user)
+
             render :new
+
+            remove_flash_alert
         end
     end
 
     def destroy
-        binding.pry
         revoke_token
 
         redirect_to root_path

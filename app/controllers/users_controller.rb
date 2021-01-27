@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
     before_action :check_logged_in, only: [:new, :create]
     
+    def index 
+        redirect_to signup_path
+    end
+
     def new 
         @user = User.new
     end
@@ -12,7 +16,11 @@ class UsersController < ApplicationController
 
             redirect_to root_path
         else
+            set_flash_alert_for(@user)
+
             render :new
+
+            remove_flash_alert
         end
     end
 

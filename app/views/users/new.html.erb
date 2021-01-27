@@ -1,25 +1,27 @@
+<%= display_flash %>
+
 <div class="signup-form">
-    Sign Up
+    <div class="signup-header">Sign Up</div>
     <%= form_for @user do |f| %>
-        <% if @user.errors.any? %>
-            <div class="errors">
-                <h3>The following needs to be corrected:</h3><br>
-                <ul>
-                    <% @user.errors.full_messages.each do |mssg| %>
-                        <li><p><%= mssg %></p></li>
-                    <% end %>
-                </ul>
-            </div> 
-        <% end %>
-            <%= f.label :email %>
-            <%= f.text_field :email %><br>
-
-            <%= f.label :password %>
-            <%= f.password_field :password %><br>
-
-            <%= f.label :password_confirmation, "Confirm Password" %>
-            <%= f.password_field :password_confirmation %><br>
-
+        <div class="field email-field">
+            <%= f.label :email %><br>
+            <%= f.text_field :email, placeholder: "john.doe@example.com" %><br>
+        </div>
+            
+        <div class="field password-field">
+            <%= f.label :password %><br>
+            <%= f.password_field :password, placeholder: "Enter Password" %><br>
+        </div>
+            
+        <div class="field password-confirm-field">
+            <%= f.label :password_confirmation, "Confirm Password" %><br>
+            <%= f.password_field :password_confirmation, placeholder: "Re-enter Password" %><br>
+        </div>
+            
+        <div class="submit-options">
+            <%= check_box_tag :persist_session, nil, true %>
+                <small>Remember me?</small>
             <%= f.submit "Sign Up" %>
+        </div>
     <% end %>
 </div>

@@ -1,13 +1,20 @@
-Log In 
-
 <div class="login-form">
+    <div class="login-header">Log In</div>
     <%= form_tag user_login_path do %>
-            <%= label_tag :email %>
-            <%= text_field_tag :email %><br>
+            <div class="field email-field">
+                <%= label_tag :email %><br>
+                <%= text_field_tag :email, nil, placeholder: "john.doe@example.com" %><br>
+            </div>
 
-            <%= label_tag :password %>
-            <%= password_field_tag :password %>
+            <div class="field password-field">
+                <%= label_tag :password %><br>
+                <%= password_field_tag :password, nil, placeholder: "Minimum 8 Characters" %><br>
+            </div>
 
-            <%= submit_tag "Log In" %>
+            <div class="submit-options">
+                <%= check_box_tag :persist_session, nil, true %>
+                <small>Remember me?</small>
+                <%= submit_tag "Log In" %>
+            </div>
     <% end %>
 </div<
