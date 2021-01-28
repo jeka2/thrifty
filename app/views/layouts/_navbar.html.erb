@@ -1,8 +1,17 @@
-<div class="navbar">
+<div id="navbar">
+    <%= link_to "Home", root_path, class: "navbar-brand" %>
+    <div class="nav-item navbar-nav"><a href="#">Departments</a></div>
+
+    <form id="form-inline" class="form-inline">
+        <input id="form-control" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="nav-item navbar-nav"><a href="#">My Profile</a></div>
+    <div class="nav-item cart-href"><a href="#">Cart</a></div>
     <% if current_user %>
-        <%= link_to "Log Out", logout_path %>
+        <div class="nav-item logout-href"><%= link_to "Log Out", logout_path %></div>
     <% else %>
-        <%= link_to "Sign Up", signup_path %>
-        <%= link_to "Log In", login_path %>
+        <div class="nav-item signup-href"><%= link_to "Sign Up", signup_path %></div>
+        <div class="nav-item login-href"><%= link_to "Log In", login_path %></div>
     <% end %>
 </div>
