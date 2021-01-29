@@ -5,6 +5,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.integer :quantity
       t.text :description
       t.decimal :rating
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
