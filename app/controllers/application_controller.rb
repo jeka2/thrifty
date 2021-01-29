@@ -29,5 +29,10 @@ private
         flash[:alert] = nil
     end
 
+    def admin?
+        current_user.role == 'admin' if current_user
+    end
+
+    helper_method :admin?
     helper_method :current_user
 end

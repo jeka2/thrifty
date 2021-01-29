@@ -1,6 +1,9 @@
 class User < ApplicationRecord
     has_secure_password
 
+    has_many :items
+    has_many :comments
+
     validates :email, 
     format: { with: /\A(.+)@(.+)\z/, message: "invalid" },
               presence: true, uniqueness: true,
