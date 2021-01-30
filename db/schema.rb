@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 2021_01_28_225412) do
     t.integer "quantity"
     t.text "description"
     t.decimal "rating"
-    t.integer "user_id", null: false
+    t.integer "creator_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["creator_id"], name: "index_items_on_creator_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,5 +63,5 @@ ActiveRecord::Schema.define(version: 2021_01_28_225412) do
   add_foreign_key "category_items", "items"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
-  add_foreign_key "items", "users"
+  add_foreign_key "items", "users", column: "creator_id"
 end
