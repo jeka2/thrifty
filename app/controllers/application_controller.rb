@@ -17,8 +17,12 @@ private
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 
-    def check_logged_in
+    def home_if_logged_in
         redirect_to root_path if logged_in?
+    end
+
+    def home_unless_logged_in
+        redirect_to root_path unless logged_in?
     end
 
     def set_flash_alert_for(obj)
@@ -35,4 +39,5 @@ private
 
     helper_method :admin?
     helper_method :current_user
+    helper_method :logged_in?
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_225412) do
+ActiveRecord::Schema.define(version: 2021_01_30_013643) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -39,15 +39,25 @@ ActiveRecord::Schema.define(version: 2021_01_28_225412) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "departments", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.decimal "price"
     t.integer "quantity"
+    t.string "name"
     t.text "description"
     t.decimal "rating"
     t.integer "creator_id", null: false
+    t.integer "department_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["creator_id"], name: "index_items_on_creator_id"
+    t.index ["department_id"], name: "index_items_on_department_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -63,5 +73,6 @@ ActiveRecord::Schema.define(version: 2021_01_28_225412) do
   add_foreign_key "category_items", "items"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
+  add_foreign_key "items", "departments"
   add_foreign_key "items", "users", column: "creator_id"
 end

@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
-  resources :items, only: [:new, :create, :edit, :update, :delete, :show]
+  resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+
+  resources :users, only: [:show] do 
+    resources :items, only: [:index]
+  end
 
   scope '/admin' do 
-    resources :categories, only: [:index, :new, :create, :edit, :update, :delete]
+    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
   get '/signup', to: 'users#new', as: 'signup'

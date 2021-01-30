@@ -1,13 +1,30 @@
 class ItemsController < ApplicationController
-    before_action :check_logged_in, except: [:show]
+    before_action :home_unless_logged_in, except: [:show, :index]
+    before_action :set_item, only: [:show, :edit, :update, :delete]
+    before_action :authorized_to_edit?, only: [:edit, :update, :delete]
+
+    def index
+        if params[:user_id]
+            @user = User.find_by_id(params[:user_id])
+            if @user
+                @items = @user.items
+            else
+                redirect_to root_path
+            end
+        else
+            @items = Item.all
+        end
+    end
+
     def new
-        @item = Item.new
     end
 
     def create
         item = Item.new(item_params)
+        item.creator_id = current_user.id
+
         if item.save 
-            redirect_to root_path
+            redirect_to user_items_path(current_user)
         else
             set_flash_alert_for(item)
 
@@ -18,20 +35,18 @@ class ItemsController < ApplicationController
     end
 
     def show
-        @item = Item.find(params[:id])
     end
 
     def edit
-        @item = Item.find(params[:id])
+
     end
 
     def update
-        item = Item.find(params[:id])
-
-        if item.update(item_params)
-            redirect_to item_path(item)
+        if @item.update(item_params)
+            redirect_to item_path(@item)
         else
-            set_flash_alert_for(item)
+            binding.pry
+            set_flash_alert_for(@item)
 
             render :edit
             
@@ -39,19 +54,26 @@ class ItemsController < ApplicationController
         end
     end
 
-    def delete
-        item = Item.find(params[:id])
-
-
+    def destroy
+        binding.pry
     end
 
 private 
+    def set_item
+        @item = Item.find_by_id(params[:id])
+    end
+
     def authorized_to_edit?
-        logged_in? && current_user.id == @item.user_id
+        if !(@item && logged_in? && current_user.id == @item.creator_id)
+            @item.errors.add(:creator, 'You are not permitted to edit this resource')
+            set_flash_alert_for(@item)
+
+            redirect_to root_path
+        end
     end
 
     def item_params
-        params.require(:item).permit(:price, :quantity, :description)
+        params.require(:item).permit(:name, :price, :quantity, :description, :department)
     end
 
 end

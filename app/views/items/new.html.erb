@@ -1,0 +1,14 @@
+<%= form_for Item.new do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :price %>
+    <%= f.number_field :price, step: :any %>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label "Choose from department" %>
+    <%= f.collection_select :department, Department.order(:name), :id, :name %>
+
+    <%= f.submit 'Create Item' %>
+<% end %>
