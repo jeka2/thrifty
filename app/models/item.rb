@@ -4,6 +4,7 @@ class Item < ApplicationRecord
 
     has_many :category_items
     has_many :categories, through: :category_items
+    has_many_attached :images
 
     validates :name, { presence: true, uniqueness: true }
     validates :price, presence: true
