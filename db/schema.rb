@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_01_30_215032) do
     t.string "name"
     t.text "description"
     t.decimal "rating"
-    t.string "image"
+    t.string "images"
     t.integer "creator_id", null: false
     t.integer "department_id", null: false
     t.datetime "created_at", precision: 6, null: false

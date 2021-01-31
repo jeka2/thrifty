@@ -11,7 +11,7 @@ class Item < ApplicationRecord
     validates :quantity, presence: true
     validates :description, presence: true
 
-    mount_uploader :image, ImageUploader
+    mount_uploaders :images, ImageUploader
 
     def department=(department)
         if department.is_a?(String)

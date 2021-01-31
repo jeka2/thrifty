@@ -1,5 +1,5 @@
 <%= @item.name %> - <%= @item.price %><br>
 <%= @item.description %>
 <% @item.images.each do |image| %>
-    <%= image_tag image, style: "width:400px" %>
+    <%= image_tag image.url %>
 <% end %>
