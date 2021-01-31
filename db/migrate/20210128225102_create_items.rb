@@ -6,6 +6,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string :name
       t.text :description
       t.decimal :rating
+      t.string :image
       t.references :creator, null: false, foreign_key: { to_table: :users }
       t.references :department, null: false, foreign_key: true
       t.timestamps

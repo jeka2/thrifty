@@ -24,7 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.0.0'
 gem 'language_filter'
 gem 'faker'
-gem 'image_processing', '~> 1.2'
+gem 'carrierwave', '~> 2.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
