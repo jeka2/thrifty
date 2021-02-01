@@ -6,7 +6,6 @@ for (let i = 0; i < dots.length; i++) {
         currentSlide(i + 1);
     });
 }
-console.log(dots)
 prevButton.addEventListener('click', (e) => {
     plusSlides(-1);
 })

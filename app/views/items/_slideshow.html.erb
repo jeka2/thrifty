@@ -1,0 +1,16 @@
+<div id="slideshow-container" class="slideshow-containter">
+    <% images.each do |image| %>
+        <div class="mySlides slide-fade">
+            <%= image_tag image, class:'item-image' %>
+        </div>
+    <% end %>
+    <div style="width: 100%;">
+        <a id="prev" class="prev">&#10094;</a>
+        <a id="next" class="next">&#10095;</a>
+    </div>
+    <div id="dots-container" style="text-align:center">
+        <% images.length.times do %>
+            <span class="dot"></span>
+        <% end %>
+    </div>
+</div>
