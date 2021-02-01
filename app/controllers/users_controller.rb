@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :check_logged_in, only: [:new, :create]
+    before_action :home_if_logged_in, only: [:new, :create]
     
     def index 
         redirect_to signup_path
