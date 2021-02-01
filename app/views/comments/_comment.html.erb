@@ -1,0 +1,6 @@
+<% from_reply_form ||= nil %>
+<%= comment.content %><br>
+
+<% unless from_reply_form %>
+    <%= link_to 'reply', new_comment_path(comment) %><br>
+<% end %>

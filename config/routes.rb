@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
   resources :items, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  resources :comments, only: [:create]
+  get '/comments/new/:parent_id', to: 'comments#new', as: :new_comment
 
   resources :users, only: [:show] do 
     resources :items, only: [:index]

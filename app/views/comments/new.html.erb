@@ -1,0 +1,12 @@
+<% if @parent %>
+    <%= render 'comment', comment: @parent, from_reply_form: true %>
+<% end %>
+<%= form_for @comment do |f| %>
+    <%= f.hidden_field :parent_id %>
+
+    <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_field :content, class: 'form-control' %>
+    </div>
+    <%= f.submit 'Reply' %>
+<% end %>
