@@ -1,5 +1,6 @@
 <% if @parent %>
-    <%= render 'comment', comment: @parent, from_reply_form: true %>
+    <% binding.pry %>
+    <%#= render partial: 'comment', locals: { item_id: comment: @parent, from_reply_form: true } %>
 <% end %>
 <%= form_for @comment do |f| %>
     <%= f.hidden_field :parent_id %>

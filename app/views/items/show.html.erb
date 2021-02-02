@@ -15,7 +15,7 @@
 <% end %>
 
 <div id="comments">
-    <%= render partial: 'comments/comment', collection: @item.comments, as: :comment, locals: { item_id: @item.id } %>
+    <%= render partial: 'comments/comment', collection: comment_roots(@item.id), as: :comment, locals: { item_id: @item.id } %>
 </div>
 
 <%= javascript_pack_tag 'itemSlideshow' %>
