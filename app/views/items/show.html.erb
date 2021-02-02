@@ -1,12 +1,33 @@
-<%= @item.name %> - <%= @item.price %><br>
-<%= @item.description %>
-<% images_urls = ["4urbof.jpg","c.PNG","Cadpture.PNG"] %>
-<%= render partial: 'slideshow', locals: { images: images_urls } %>
+<div id="item-page">
+    <div id="info-section">
+        <div id="images">
+            <% images_urls = ["4urbof.jpg","c.PNG","Cadpture.PNG"] %>
+            <%= render partial: 'images', locals: { images: images_urls } %>
+        </div>
+        <div id="item-info">
+            <div id="categories"><small>blah</small></div>
+            <h3 class="item-name"><%= @item.name %></h3>
+            <hr>
+            <div id="item-actions">
+                <div id="about-item">
+                    <h4><%= @item.description %><br></h4>
+                    <h4><%= @item.price %>$</h4>
+                    <h4><%= @item.rating %></h4>
+                    <h4><%= @item.quantity %> Available In Stock</h4>
+                </div>
+                <div id="purchase-options">
+                    <a id="buy-button" class="btn btn-primary" href="#">Buy Now</a><br>
+                    <a id="cart-button" class="btn btn-success" href="#">Add To Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div id="comment-section">
-    <%= render partial: 'comments/form' %>
-    <div id="comments">
-        <%= render partial: 'comments/comment', collection: comment_roots(@item.id), as: :comment, locals: { item_id: @item.id } %>
+    <div id="comment-section">
+        <%= render partial: 'comments/form' %>
+        <div id="comments">
+            <%= render partial: 'comments/comment', collection: comment_roots(@item.id), as: :comment, locals: { item_id: @item.id } %>
+        </div>
     </div>
 </div>
 

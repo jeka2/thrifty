@@ -1,0 +1,27 @@
+#info-section {
+    display: flex;
+}
+
+#info-section > div {
+    margin: 5px;
+}
+
+#item-actions {
+    display: flex;
+}
+
+#about-item {
+    flex: 4;
+}
+
+#purchase-options {
+    flex: 1;
+}
+
+#buy-button {
+    margin-bottom: 30px;
+}
+
+.item-name {
+    margin-top: 4px;
+}
