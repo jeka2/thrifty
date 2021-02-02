@@ -3,8 +3,7 @@
 <% images_urls = ["4urbof.jpg","c.PNG","Cadpture.PNG"] %>
 <%= render partial: 'slideshow', locals: { images: images_urls } %>
 
-<%= render partial: 'comments/comment', collection: @item.comments, as: :comment, locals: { item_id: @item.id } %>
-<%= form_for(Comment.new) do |f| %>
+<%= form_for Comment.new, remote: true do |f| %>
   <div class="form-group">
     <%= f.label 'Comment here' %>
     <%= f.text_field :content, class: 'form-control' %>
@@ -14,5 +13,9 @@
   <%= f.hidden_field :item_id, value: @item.id %>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+
+<div id="comments">
+    <%= render partial: 'comments/comment', collection: @item.comments, as: :comment, locals: { item_id: @item.id } %>
+</div>
 
 <%= javascript_pack_tag 'itemSlideshow' %>
