@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
     def new
+
         @parent = Comment.find_by_id(params[:parent_id])
         @comment = Comment.new(parent_id: params[:parent_id]) if @parent
     end
@@ -11,7 +12,7 @@ class CommentsController < ApplicationController
         else  
             @comment = Comment.new(comment_params)
         end
-        binding.pry
+
         respond_to do |format|
             if @comment.save
                 format.html { redirect_to root_path }

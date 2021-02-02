@@ -1,7 +1,10 @@
 <% from_reply_form ||= nil %>
-<%= formatted_time(comment) %>
-<%= comment.content %><br>
+<div class="comment">
+    <small class="comment-time"><%= formatted_time(comment) %></small>
+    <small class="comment-user"><%= comment.user.email + ":" %><br></small>
+    <div class="comment-content"> <%= comment.content %></div>
 
-<% unless from_reply_form %>
-    <%= link_to 'reply', new_comment_path(comment) %><br>
-<% end %>
+    <% unless from_reply_form %>
+        <div class="comment-reply"><%= link_to 'reply', new_comment_path(comment), remote: true %></div>
+    <% end %>
+</div>

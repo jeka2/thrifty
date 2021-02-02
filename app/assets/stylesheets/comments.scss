@@ -1,0 +1,48 @@
+input[type=text] {
+    width: 240px;
+}
+#comment-form {
+    width: 100%;
+    overflow: auto;
+    word-wrap: normal;
+    word-break: break-all;
+    white-space: normal;
+}
+
+#comment-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.comment {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    border: 1px solid black;
+    margin: 3px 0 3px 0;
+}
+
+.comment-time {
+    position: relative;
+    float: right;
+    margin: 4px 5px 0 0 ;
+}
+
+.comment-user {
+    position: relative;
+    margin-left: 4px;
+}
+
+.comment-content {
+    width: 100%;
+    max-width: 90%;
+    margin: auto;
+    overflow-wrap: break-word;
+}
+
+.comment-reply {
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+} 

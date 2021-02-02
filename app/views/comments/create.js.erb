@@ -1,1 +1,3 @@
-document.getElementById('comments').insertAdjacentHTML('afterBegin', '<%=j render @comment %>')
+document.getElementById('comments').insertAdjacentHTML('afterBegin', '<%=j render @comment %>');
+console.log(document.getElementById('comment-form'));
+document.getElementById('comment-form').value = "";

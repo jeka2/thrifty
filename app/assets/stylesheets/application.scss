@@ -14,3 +14,9 @@
  *= require_self
  */
 @import "bootstrap";
+
+.main-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+}

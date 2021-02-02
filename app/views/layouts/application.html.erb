@@ -13,6 +13,8 @@
   <body>
     <%= render 'layouts/navbar' %>
     <%= display_flash %>
-    <%= yield %>
+    <div class="main-container">
+      <%= yield %>
+    </div>
   </body>
 </html>
