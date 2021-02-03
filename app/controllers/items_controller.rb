@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
     end
 
     def create
+        binding.pry
         item = Item.new(item_params)
         item.creator_id = current_user.id
 
@@ -74,7 +75,7 @@ private
     end
 
     def item_params
-        params.require(:item).permit(:name, :price, :quantity, :description, :department, images: [])
+        params.require(:item).permit(:name, :price, :quantity, :description, :department, images: [], category_ids: [])
     end
 
 end

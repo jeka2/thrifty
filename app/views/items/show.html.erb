@@ -5,7 +5,13 @@
             <%= render partial: 'images', locals: { images: images_urls } %>
         </div>
         <div id="item-info">
-            <div id="categories"><small>blah</small></div>
+            <div id="categories">
+                <% if @item.categories %>
+                    <% @item.categories.each do |category| %>
+                        <%= link_to category.name, category_path(category.id) %>
+                    <% end %>
+                <% end %>
+            </div>
             <h3 class="item-name"><%= @item.name %></h3>
             <hr>
             <div id="item-actions">
