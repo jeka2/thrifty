@@ -1,0 +1,21 @@
+<select id="category-select">
+    <% @categories.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
+    <% end %>
+</select>
+
+<%= form_tag query_categories_path, remote: true do %>
+    <div id="selected-options">
+        <ul id="selected-options-list">
+            
+        </ul>
+    </div>
+    <%= submit_tag "Refine Search" %>
+<% end %>
+
+<section id="search-results">
+    sdf
+</section>
+
+
+<%= javascript_pack_tag 'categorySearch' %>

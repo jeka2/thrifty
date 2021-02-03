@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
     def new
-
         @parent = Comment.find_by_id(params[:parent_id])
         @comment = Comment.new(parent_id: params[:parent_id]) if @parent
+        respond_to do |format|
+            
+        end
     end
 
     def create

@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
+  get 'categories/search', to: 'categories_search#new', as: 'search_categories'
+  post 'categories/search', to: 'categories_search#create', as: 'query_categories'
   get 'category/:id', to: 'categories#show', as: 'show_category'
+
 
   get '/signup', to: 'users#new', as: 'signup'
   get '/login', to: 'sessions#new', as: 'login'
