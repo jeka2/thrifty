@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
   end
 
-  resources :categories, only: [:show]
+  get 'category/:id', to: 'categories#show', as: 'show_category'
 
   get '/signup', to: 'users#new', as: 'signup'
   get '/login', to: 'sessions#new', as: 'login'
