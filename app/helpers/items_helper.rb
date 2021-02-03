@@ -8,16 +8,15 @@ module ItemsHelper
         end 
     end
 
-    def display_image_slideshow(images)
-        names = ["4urbof.jpg", "c.PNG", "Cadpture.PNG"]
-        content_tag(:div, class: "slideshow-container", id: "slideshow-container") do
-            names.each do |name|
-                concat content_tag(:div, image_tag(name), class: ["mySlides", "slide-fade"]) 
-            end
-            content_tag(:div) do 
-                concat content_tag(:div, "Comment")
-            end
+    def display_image_slideshow(item)
+        images = item.images
+        path_split_arr = images.first.identifier.split('"')
+        path_names = Array.new
+        path_split_arr.each.with_index do |val, i|
+            path_names << val if i % 2 != 0
         end
+        
+        render partial: 'items/slideshow', locals: { images: path_names, item_id: item.id }
     end
 end
 
