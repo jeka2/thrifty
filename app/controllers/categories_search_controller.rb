@@ -4,9 +4,6 @@ class CategoriesSearchController < ApplicationController
     end
 
     def create
-        respond_to do |format|
-            format.html { redirect_to root_path }
-            format.js
-        end
+        binding.pry
     end
 end

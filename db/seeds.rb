@@ -13,7 +13,7 @@ end
 
 1.upto(10) do |i| 
     u = User.create(email:"a#{i}@a.com", password: 'Password1!', role:'admin')
-    5.times do
+    200.times do
         u.items.create(name: Faker::House.furniture, price: (rand(1.0..10.0) * 10).round(2), quantity: rand(1..10), description: Faker::Lorem.sentence(word_count: 50), department: Department.all.sample)
     end
 end
