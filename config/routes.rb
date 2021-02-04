@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'categories/search', to: 'categories_search#new', as: 'search_categories'
   post 'categories/search', to: 'categories_search#create', as: 'query_categories'
   get 'category/:id', to: 'categories#show', as: 'show_category'
+  get 'search', to: 'searchbar#new', as: 'search_path'
 
 
   get '/signup', to: 'users#new', as: 'signup'
