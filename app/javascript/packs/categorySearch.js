@@ -47,3 +47,27 @@ function removeOnUncheck(checkbox, surroundingLi) {
     });
 }
 
+/////////////////////
+let button = document.getElementById('button');
+button.addEventListener('click', (e) => {
+
+});
+
+async function getBooks(title, list) {
+    let listItem = document.getElementById('search-results');
+    let result;
+
+    try {
+        result = await $.ajax({
+            url: '/books/search_bar',
+            type: 'GET',
+            data: { 'title': title },
+            success: function (data, status, xhr) {
+                appendNames(data, list);
+            },
+            dataType: "json"
+        });
+    } catch (e) {
+
+    }
+}
