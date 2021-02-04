@@ -2,7 +2,13 @@
     <div id="info-section">
         <%= display_image_slideshow(@item) %>
         <div id="item-info">
-            <div id="categories"><small>blah</small></div>
+            <div id="categories">
+                <% if @item.categories %>
+                    <% @item.categories.each do |category| %>
+                        <%= link_to category.name, show_category_path(category.id) %>
+                    <% end %>
+                <% end %>
+            </div>
             <h3 class="item-name"><%= @item.name %></h3>
             <hr>
             <div id="item-actions">

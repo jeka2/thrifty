@@ -13,16 +13,16 @@ end
 
 1.upto(10) do |i| 
     u = User.create(email:"a#{i}@a.com", password: 'Password1!', role:'admin')
-    5.times do
+    200.times do
         u.items.create(name: Faker::House.furniture, price: (rand(1.0..10.0) * 10).round(2), quantity: rand(1..10), description: Faker::Lorem.sentence(word_count: 50), department: Department.all.sample)
     end
 end
 
-1.upto(40) do |i|
-    c = Comment.create(content: Faker::Lorem.sentence(word_count: 10), user_id: User.all.sample.id, item_id: 1)
+categories = ['kids','auto','music','video games','hobby','movies','toys','guns','food']
+categories.each do |name|
+    Category.create(name: name, description: Faker::Lorem.sentence(word_count: 50))
 end
 
-
-[*2..40].each do |num|
-    Comment.find(rand(1..num-1)).children << Comment.find(num)
+Item.all.each do |item|
+    item.category_ids = Category.all.sample(3).map(&:id)
 end
