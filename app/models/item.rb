@@ -7,7 +7,7 @@ class Item < ApplicationRecord
     has_many_attached :images
     has_many :comments
 
-    validates :name, { presence: true, uniqueness: true }
+    validates :name, { presence: true }
     validates :price, presence: true
     validates :quantity, presence: true
     validates :description, presence: true
