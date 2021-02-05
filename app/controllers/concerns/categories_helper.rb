@@ -8,7 +8,6 @@ module CategoriesHelper
         end
 
         a = get_items_to_return(items_arr)
-        binding.pry
     end
 
 protected

@@ -1,2 +1,2 @@
-const itemsContainer = document.getElementById('search-results');
-itemsContainer.appendChild('')
+document.getElementById('search-results').innerHTML = "";
+document.getElementById('search-results').append("<%=j render partial: 'items/single', collection: @items, as: :item %>");

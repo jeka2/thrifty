@@ -17,6 +17,12 @@
 }
 
 .category-checkbox {
+    -webkit-appearance: initial;
+    appearance: initial;
     margin-left: 4px;
     padding-left: 4px;
+}
+
+.category-checkbox:checked:after {
+    content: "X";
 }
