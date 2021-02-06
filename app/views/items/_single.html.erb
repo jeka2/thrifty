@@ -1,1 +1,5 @@
-<%= item.name %>
+
+|||<%= item.name %>|||
+<% item.categories.each do |cat| %>
+    <%= cat.name %>
+<% end %>
