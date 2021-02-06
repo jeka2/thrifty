@@ -1,2 +1,3 @@
 document.getElementById('search-results').innerHTML = "";
-document.getElementById('search-results').append("<%=j render partial: 'items/single', collection: @items, as: :item %>");
+document.getElementById('search-results').insertAdjacentHTML("afterBegin", "<%=j render partial: 'items/single', collection: @items, as: :item %>");
+if(!document.querySelector('.pagination')) { document.getElementById('search-results').insertAdjacentHTML("afterEnd", "<%=j paginate(@items, @per_page, @categories) %>"); }
