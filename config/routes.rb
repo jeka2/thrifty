@@ -23,5 +23,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create', as: 'user_login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
+  match '/auth/:google_oauth2/callback', to: 'sessions#google', via: [:get, :post]
+
   root 'static#home'
 end

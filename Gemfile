@@ -28,6 +28,10 @@ gem 'bootstrap-sass'
 gem 'closure_tree'
 gem 'will_paginate', '~> 3.3.0'
 gem 'order_as_specified'
+gem 'omniauth'
+gem 'dotenv-rails'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
