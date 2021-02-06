@@ -26,6 +26,8 @@ gem 'faker'
 gem 'carrierwave', '~> 2.0'
 gem 'bootstrap-sass'
 gem 'closure_tree'
+gem 'will_paginate', '~> 3.3.0'
+gem 'order_as_specified'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

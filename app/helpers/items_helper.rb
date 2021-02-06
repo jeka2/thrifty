@@ -19,27 +19,3 @@ module ItemsHelper
         render partial: 'items/slideshow', locals: { images: path_names, item_id: item.id }
     end
 end
-
-# <div id="slideshow-container" class="slideshow-containter">
-#     <div class="mySlides slide-fade">
-#         <div class="numbertext">1 / 3</div>
-#         <%= image_tag "4urbof.jpg" %>
-#     </div>
-#     <div class="mySlides slide-fade">
-#         <div class="numbertext">2 / 3</div>
-#         <%= image_tag("c.PNG") %>
-#     </div>
-#     <div class="mySlides slide-fade">
-#         <div class="numbertext">3 / 3</div>
-#         <%= image_tag("Cadpture.PNG") %>
-#     </div>
-#     <div style="width: 100%;">
-#         <a id="prev" class="prev">&#10094;</a>
-#         <a id="next" class="next">&#10095;</a>
-#     </div>
-#     <div id="dots-container" style="text-align:center">
-#         <span class="dot"></span>
-#         <span class="dot"></span>
-#         <span class="dot"></span>
-#     </div>
-# </div>
