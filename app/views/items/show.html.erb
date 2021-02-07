@@ -1,6 +1,6 @@
 <div id="item-page">
     <div id="info-section">
-        <%= display_image_slideshow(@item) %>
+        <%= display_image_slideshow(@item) if @item.images.count > 0 %>
         <div id="item-info">
             <div id="categories">
                 <% if @item.categories %>

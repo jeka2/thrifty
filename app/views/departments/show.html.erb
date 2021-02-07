@@ -1,0 +1,5 @@
+<%= @department.name %><br>
+<% @department.items.each do |item| %>
+    <%= link_to item.name, item %><br>
+    <%= item.description.truncate(100) %><br>
+<% end %>

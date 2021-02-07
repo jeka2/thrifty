@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 
   scope '/admin' do 
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :departments, only: [:new, :create, :edit, :update, :destroy]
   end
+
+  resources :departments, only: [:index, :show]
 
   get 'categories/search', to: 'categories_search#new', as: 'search_categories'
   post 'categories/search', to: 'categories_search#create', as: 'query_categories'

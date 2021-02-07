@@ -35,16 +35,9 @@ class CategoriesController < ApplicationController
         else
             render :edit
         end
-
     end
 
 private 
-
-    def authenticate_admin
-        if !logged_in? || current_user.role != 'admin'
-            redirect_to root_path
-        end
-    end
 
     def category_params
         params.require(:category).permit(:name, :description)
