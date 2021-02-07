@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-    require 'mini_magick'
     before_action :home_unless_logged_in, except: [:show, :index]
     before_action :set_item, only: [:show, :edit, :update, :delete]
     before_action :authorized_to_edit?, only: [:edit, :update, :delete]

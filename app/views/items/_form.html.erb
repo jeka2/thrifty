@@ -1,0 +1,26 @@
+<%= form_for @item || Item.new, html: { id:'new-item-form' } do |f| %>
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+    <div class="form-group">
+        <%= f.label :price %>
+        <%= f.number_field :price, step: :any %>
+    </div>
+    <div class="form-group">
+        <%= f.label :quantity %>
+        <%= f.number_field :quantity %>
+    </div>
+    <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+    </div>
+    <div class="form-group">
+        <%= f.label "Choose from department" %>
+        <%= f.collection_select :department, Department.order(:name), :id, :name %>
+    </div>
+    <div class="form-group">
+        <%= f.file_field :images, multiple: true %>
+    </div>
+    <%= f.submit @item ? 'Update Item' : 'Create Item', id: 'submit-button' %>
+<% end %>
