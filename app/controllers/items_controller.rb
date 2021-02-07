@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
     end
 
     def create
-        binding.pry
         item = Item.new(item_params)
         item.creator_id = current_user.id
 
@@ -46,7 +45,6 @@ class ItemsController < ApplicationController
         if @item.update(item_params)
             redirect_to item_path(@item)
         else
-            binding.pry
             set_flash_alert_for(@item)
 
             render :edit
