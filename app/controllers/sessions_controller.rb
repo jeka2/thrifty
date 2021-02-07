@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
             redirect_to root_path
         else    
-            set_flash_alert_for(user)
+            flash[:alert] = ["Wrong Credentials"]
 
             render :new
 
