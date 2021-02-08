@@ -17,9 +17,11 @@ class ItemsController < ApplicationController
     end
 
     def new
+        redirect_to root_path unless params[:user_id].to_i == current_user.id
     end
 
     def create
+        binding.pry
         item = Item.new(item_params)
         item.creator_id = current_user.id
 
@@ -64,8 +66,7 @@ private
 
     def authorized_to_edit?
         if !(@item && logged_in? && current_user.id == @item.creator_id)
-            @item.errors.add(:creator, 'You are not permitted to edit this resource')
-            set_flash_alert_for(@item)
+            flash[:alert] = ["You are not allowed to edit this resource"]
 
             redirect_to root_path
         end

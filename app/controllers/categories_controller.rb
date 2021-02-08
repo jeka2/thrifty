@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-    before_action :authenticate_admin
+    before_action :authenticate_admin, except: [:index, :show]
     
     def index
         @categories = Category.all

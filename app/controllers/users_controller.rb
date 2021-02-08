@@ -5,6 +5,10 @@ class UsersController < ApplicationController
         redirect_to signup_path
     end
 
+    def show 
+        
+    end
+
     def new 
         @user = User.new
     end

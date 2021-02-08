@@ -2,8 +2,8 @@ module ItemsHelper
     def modify_options_for(item)
         if item.creator_id == current_user.id
             content_tag :div do 
-                concat link_to 'edit this item', edit_item_path(item) 
-                concat link_to 'delete this item', item, method: 'delete'
+                concat link_to 'edit this item', edit_user_item_path(current_user, item) 
+                concat link_to 'delete this item', user_item_path(current_user, item), method: 'delete'
             end
         end 
     end
