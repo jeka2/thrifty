@@ -15,12 +15,13 @@ module ItemsHelper
 
     def display_user_image_slideshow(user)
         if !user.items.empty?
-            user.items.limit(12).each do |item|
-                if !item.images.empty? 
-
-                else
-
+            urls_list = Array.new
+            content_tag(:div, id:'images-container', class:'top-content') do 
+                user.items.limit(12).each do |item|
+                    urls_list << get_image_urls(target_item: item, type:'user_page')
                 end
+
+                render partial: 'items/user_page_slideshow', locals: { list: urls_list }
             end
         end
     end
@@ -38,9 +39,9 @@ protected
                 path = target_item.id
             end
         else
-            path_urls << "#{type + '_' if type }default"
+            path_urls << "#{type + '_' if type }default.jpg"
             path = "fallback"
         end
-        { path_urls: path_urls, path: path }
+        { path_urls: path_urls, path: path, name: target_item.name, id: target_item.id }
     end
 end
