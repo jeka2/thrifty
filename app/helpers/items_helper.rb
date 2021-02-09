@@ -10,12 +10,18 @@ module ItemsHelper
 
     def display_image_slideshow(item)
         images = item.images
-        path_split_arr = images.first.identifier.split('"')
-        path_names = Array.new
-        path_split_arr.each.with_index do |val, i|
-            path_names << val if i % 2 != 0
+        path_urls = Array.new
+        if !item.images.empty?
+            path_split_arr = images.first.identifier.split('"')
+            path_split_arr.each.with_index do |val, i|
+                path_urls << val if i % 2 != 0
+            end
+            path = item.id
+        else
+            path_urls << "default.jpg"
+            path = "fallback"
         end
         
-        render partial: 'items/slideshow', locals: { images: path_names, item_id: item.id }
+        render partial: 'items/slideshow', locals: { images: path_urls, path: path }
     end
 end

@@ -5,6 +5,10 @@
   margin: auto;
 }
 
+#slideshow-container .hidden {
+  visibility: hidden;
+}
+
 /* Hide the images by default */
 .mySlides {
   display: none;
@@ -26,8 +30,12 @@
   user-select: none;
 }
 
+.prev {
+  left: 59px;
+}
+
 .next {
-  float: right;
+  left: 453px;
 }
 
 .prev:hover, .next:hover {
@@ -63,6 +71,11 @@
 #dots-container {
   position: relative;
   margin: auto;
+  text-align: center;
+}
+
+#navigation-arrows {
+  width: 100%;
 }
 
 /* The dots/bullets/indicators */
