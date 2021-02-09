@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     end
 
     def show 
-        
+        @user = User.find_by_id(params[:id])
+        redirect_to root_path unless @user
     end
 
     def new 

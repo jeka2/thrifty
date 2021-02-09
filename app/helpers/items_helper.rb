@@ -9,19 +9,38 @@ module ItemsHelper
     end
 
     def display_image_slideshow(item)
-        images = item.images
-        path_urls = Array.new
-        if !item.images.empty?
-            path_split_arr = images.first.identifier.split('"')
-            path_split_arr.each.with_index do |val, i|
-                path_urls << val if i % 2 != 0
+        url_info = get_image_urls(target_item:item)
+        render partial: 'items/slideshow', locals: { images: url_info[:path_urls], path: url_info[:path] }
+    end
+
+    def display_user_image_slideshow(user)
+        if !user.items.empty?
+            user.items.limit(12).each do |item|
+                if !item.images.empty? 
+
+                else
+
+                end
             end
-            path = item.id
+        end
+    end
+protected
+    def get_image_urls(target_item:,type:nil)
+        path_urls = Array.new
+        path = nil
+        if !target_item.images.empty?
+            path_split_arr = target_item.images.first.identifier.split('"')
+            path_split_arr.each.with_index do |val, i|
+                if i % 2 != 0
+                    url = type == nil ? val : type + '_' + val
+                    path_urls << url
+                end
+                path = target_item.id
+            end
         else
-            path_urls << "default.jpg"
+            path_urls << "#{type + '_' if type }default"
             path = "fallback"
         end
-        
-        render partial: 'items/slideshow', locals: { images: path_urls, path: path }
+        { path_urls: path_urls, path: path }
     end
 end
