@@ -1,0 +1,37 @@
+<div class="owl-carousel">
+    <% list.each do |item| %>
+        <div style="background-color: white;">
+            <%= link_to item[:name], item_path(item[:id]), class:'item-link' %>
+            <%= image_tag("/images/item/images/#{item[:path]}/#{item[:path_urls][0]}", class: 'item-image') %>
+        </div>
+    <% end %>
+</div>
+
+
+<%= content_for(:after_js) do %>
+  <script>
+  $(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        dots: true,
+        navText:["<div>&#10094;</div>","<div>&#10095;</div>"],
+        responsive: {
+            200: {
+                items: 1
+            },
+            400: {
+                items: 2
+            },
+            600: {
+                items: 3
+            },
+            800: {
+                items: 4
+            }
+        },
+    });
+  });
+  </script>
+<% end %>
