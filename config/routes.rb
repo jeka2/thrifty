@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do 
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :cart, only: [:create, :delete, :show]
   end
 
   scope '/admin' do 
@@ -25,6 +26,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create', as: 'user_login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
+
+  post '/add_to_cart', to: 'cart_items#create', as: 'add_to_cart'
+  post '/remove_from_cart', to: 'cart_items#delete', as: 'remove_from_cart'
 
   match '/auth/:google_oauth2/callback', to: 'sessions#google', via: [:get, :post]
 

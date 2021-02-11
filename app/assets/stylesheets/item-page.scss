@@ -35,3 +35,20 @@
 #submit-button {
     width: 100px;
 }
+
+#cart-form {
+    position: relative;
+}
+
+#cart-button {
+    position: absolute;
+    width: 100px;
+    left: 0;
+}
+
+.quantity-fields {
+    top: 43px;
+    position: absolute;
+    width: 60px;
+    display: block;
+}

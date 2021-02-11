@@ -1,11 +1,11 @@
 <div id="slideshow-container" class="slideshow-containter">
-    <a id="prev" class="prev">&#10094;</a>
+    <a id="prev" class="prev <%= 'hidden' if images.count == 1 %>">&#10094;</a>
     <% images.each do |image| %>
         <div class="mySlides slide-fade">
             <%= image_tag("/images/item/images/#{path}/#{image}", class: 'item-image') %>
         </div>
     <% end %>
-    <a id="next" class="next">&#10095;</a>
+    <a id="next" class="next <%= 'hidden' if images.count == 1 %>">&#10095;</a>
     <div id="dots-container" class="dots-container <%= 'hidden' if images.count == 1 %>">
         <% images.length.times do %>
             <span class="dot"></span>

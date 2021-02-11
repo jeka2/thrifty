@@ -1,6 +1,6 @@
 <div id="item-page">
     <div id="info-section">
-        <%= display_image_slideshow(@item) if @item.images.count > 0 %>
+        <%= display_image_slideshow(@item) %>
         <div id="item-info">
             <div id="categories">
                 <% if @item.categories %>
@@ -13,14 +13,17 @@
             <hr>
             <div id="item-actions">
                 <div id="about-item">
-                    <h4><%= @item.description %><br></h4>
-                    <h4><%= @item.price %>$</h4>
-                    <h4><%= @item.rating %></h4>
-                    <h4><%= @item.quantity %> Available In Stock</h4>
+                    <h4 id="item-description"><%= @item.description %><br></h4>
+                    <h4 id="item-price"><%= @item.price %>$</h4>
+                    <h4 id="item-rating"><%= @item.rating %></h4>
+                    <h4 id="item-quantity"><div id="quantity"><%= @item.quantity %></div> Available In Stock</h4>
                 </div>
                 <div id="purchase-options">
-                    <a id="buy-button" class="btn btn-primary" href="#">Buy Now</a><br>
-                    <a id="cart-button" class="btn btn-success" href="#">Add To Cart</a>
+                    <a id="buy-button" class="btn btn-primary" href="#">Buy Now</a>
+                    &#8722;
+                    &#43;
+                    <br>
+                    <%= render partial: 'cart_items/form', locals: { item_id: @item.id } %>
                 </div>
             </div>
         </div>
@@ -35,3 +38,4 @@
 </div>
 
 <%= javascript_pack_tag 'itemSlideshow' %>
+<%= javascript_pack_tag 'quantitySelect' %>

@@ -4,6 +4,8 @@ class User < ApplicationRecord
     has_many :items, foreign_key: 'creator_id'
     has_many :comments
 
+    has_one :cart
+
     validates :email, 
     format: { with: /\A(.+)@(.+)\z/, message: "invalid" },
               presence: true, uniqueness: true,
