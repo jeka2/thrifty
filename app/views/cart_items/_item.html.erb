@@ -1,4 +1,15 @@
-<div id="item-<%= item.id %>">
-    <%= link_to "X", remove_from_cart_path(item_id: item.id, cart_id: @cart.id), method: :post, remote: true %>
-    <%= item.id %>
+<div id="item-<%= item.id %>" class="cart-item">
+    <h2><%= item.name %></h2>
+    <%= link_to "X", remove_from_cart_path(item_id: item.id, cart_id: @cart.id), 
+        class:'item-remove-button', method: :post, data: { confirm: 'Remove This Item From Cart?' }, remote: true %>
+    <div class="cart-item-info">
+        <div class="item-info">
+            <h4><%= item.description %><h4>
+            <h4>Quantity: <%= quantity_in_cart(@cart.id, item.id) %><h4>
+            <h4>Price: <%= item.price %><h4>
+        </div>
+        <div class="item-picture">
+            <%= display_first_image(item) %>
+        </div>
+    </div>
 </div>

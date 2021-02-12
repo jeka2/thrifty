@@ -8,6 +8,11 @@ module ItemsHelper
         end 
     end
 
+    def display_first_image(item)
+        url_info = get_image_urls(target_item:item, type:'user_page')
+        image_tag("/images/item/images/#{url_info[:path]}/#{url_info[:path_urls][0]}", class: 'item-image')
+    end
+
     def display_image_slideshow(item)
         url_info = get_image_urls(target_item:item)
         render partial: 'items/slideshow', locals: { images: url_info[:path_urls], path: url_info[:path] }
@@ -24,6 +29,10 @@ module ItemsHelper
                 render partial: 'items/user_page_slideshow', locals: { list: urls_list }
             end
         end
+    end
+
+    def quantity_in_cart(cart_id, item_id)
+        CartItem.find_by(cart_id: cart_id, item_id: item_id).quantity
     end
 protected
     def get_image_urls(target_item:,type:nil)

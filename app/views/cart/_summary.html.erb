@@ -1,0 +1,6 @@
+<div id="summary-window">
+    <h3>Checkout Summary</h3>
+    <%= item_summary %>
+    <%= total_cost %>
+    <%= link_to "Make Purchase", user_make_purchase_path(from_cart: true), method: :post, class: ['btn', 'btn-danger'] %>
+</div>

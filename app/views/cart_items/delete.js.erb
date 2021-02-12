@@ -1,1 +1,6 @@
-console.log('hi')
+document.getElementById('item-<%= @item_id %>').remove();
+document.getElementById('item-<%= @item_id %>-summary').remove();
+let costTag = document.createElement('p');
+costTag.innerText = "Total: <%= tally_price %>";
+console.log(costTag);
+document.getElementById('total').innerHTML = costTag;

@@ -3,7 +3,7 @@ const cartForm = document.getElementById('cart-form');
 const cartButton = document.getElementById('cart-button');
 let mainQuantityDiv;
 
-document.addEventListener('click', (e) => {
+document.addEventListener('mousedown', (e) => {
     console.log(e)
     if (mainQuantityDiv != 'undefined' && !e.path.includes(cartForm)) {
         removeQuantitySelect();

@@ -4,8 +4,55 @@
 
 #items-section {
     flex: 7;
+    height: 800px;
+    overflow-y: scroll;
 }
 
 #summary-section {
     flex: 3;
+}
+
+#summary-window {
+    display: relative;
+    width:350px;
+    height: 550px;
+    margin: 50px auto;
+    text-align: center;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+
+#summary {
+    margin-top: 40px;
+}
+
+#summary > .item {
+    margin: 20px 0;
+}
+
+#total {
+    margin-top: 30%;
+}
+
+.cart-item {
+    position: relative;
+    background-color: rgb(253, 253, 253);
+}
+
+.item-remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.cart-item-info {
+    display: flex;
+}
+
+.cart-item-info > .item-info {
+    flex: 4;
+}
+
+.cart-item-info > .item-picture {
+    flex: 2;
 }

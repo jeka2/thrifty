@@ -20,7 +20,9 @@ class CartItemsController < ApplicationController
 
     def delete
         cart_item = CartItem.find_by(cart_id: params[:cart_id], item_id: params[:item_id])
+        @item_id = params[:item_id]
         cart_item.delete
+ 
         respond_to do |format|
             format.html { redirect_to root_path }
             format.js
