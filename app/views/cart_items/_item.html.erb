@@ -1,0 +1,4 @@
+<div id="item-<%= item.id %>">
+    <%= link_to "X", remove_from_cart_path(item_id: item.id, cart_id: @cart.id), method: :post, remote: true %>
+    <%= item.id %>
+</div>

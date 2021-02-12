@@ -1,0 +1,10 @@
+<div id="cart-container">
+    <% if @items && !@items.empty? %>
+        <section id="items-section">
+            <%= render partial: 'cart_items/item', collection: @items, as: :item %>
+        </section>
+        <section id="summary-section">
+
+        </section>
+    <% end %>
+</div>

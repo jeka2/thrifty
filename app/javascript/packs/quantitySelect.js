@@ -26,7 +26,7 @@ function appendQuantitySelect() {
 
     let numberInput = document.createElement('input');
     numberInput.classList.add('quantity-input-field');
-    numberInput.innerText = 1;
+    numberInput.value = 1;
     numberInput.type = 'number';
     numberInput.name = 'quantity';
     numberInput.min = 1;

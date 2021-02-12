@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do 
     resources :items, only: [:index, :new, :create, :edit, :update, :destroy]
-    resources :cart, only: [:create, :delete, :show]
+    get '/cart', to: 'cart#show', as: 'show_cart_path'
   end
 
   scope '/admin' do 
