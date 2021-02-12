@@ -13,7 +13,7 @@ module CartHelper
 
     def total_cost
         content_tag :div, id:'total' do 
-            concat content_tag :p, "Total: #{tally_price}"
+            concat content_tag :p, "Total: #{tally_price}", id:'total-amount'
         end
     end
 
