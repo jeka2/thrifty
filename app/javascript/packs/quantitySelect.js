@@ -11,7 +11,7 @@ document.addEventListener('mousedown', (e) => {
 });
 
 cartButton.addEventListener('mouseenter', (e) => {
-    if (!document.querySelector('#quantity-input')) { appendQuantitySelect(); }
+    if (!document.querySelector('#quantity-input') && maxQuantity !== 0) { appendQuantitySelect(); }
 });
 
 function appendQuantitySelect() {

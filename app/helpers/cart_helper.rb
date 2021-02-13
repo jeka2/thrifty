@@ -27,4 +27,8 @@ module CartHelper
         end
         result
     end
+
+    def already_in_cart?(item)
+        CartItem.find_by(cart_id: current_user.cart.id, item_id: item.id)
+    end
 end

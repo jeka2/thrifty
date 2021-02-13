@@ -18,13 +18,17 @@
                     <h4 id="item-rating"><%= @item.rating %></h4>
                     <h4 id="item-quantity"><div id="quantity"><%= @item.quantity %></div> Available In Stock</h4>
                 </div>
-                <div id="purchase-options">
-                    <a id="buy-button" class="btn btn-primary" href="#">Buy Now</a>
-                    &#8722;
-                    &#43;
-                    <br>
-                    <%= render partial: 'cart_items/form', locals: { item_id: @item.id } %>
-                </div>
+                <% if logged_in? %>
+                    <div id="purchase-options">
+                        <a id="buy-button" class="btn btn-primary" href="#">Buy Now</a>
+                        <br>
+                        <% if already_in_cart?(@item) %>
+                            <%= render partial: 'cart_items/visit_button', locals: { item_id: @item.id } %>
+                        <% else %>
+                            <%= render partial: 'cart_items/form', locals: { item_id: @item.id } %>
+                        <% end %>
+                    </div>
+                <% end %>
             </div>
         </div>
     </div>
