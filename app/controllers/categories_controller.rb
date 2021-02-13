@@ -7,6 +7,12 @@ class CategoriesController < ApplicationController
 
     def show
         @category = Category.find_by_id(params[:id])
+        @items = @category.items if @category
+        @per_page = 10
+
+        @page = params[:page] || 1
+
+        @items = @items.paginate(page: @page, per_page: @per_page)
     end
 
     def new

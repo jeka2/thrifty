@@ -1,7 +1,15 @@
 <div class="item-container">
     <span><h3><%= link_to item.name, item_path(item.id) %></h3></span>
     <% item.categories.each do |cat| %>
-        <span><%= cat.name %></span>
+        <span><small><%= link_to cat.name, show_category_path(cat.id) %></small></span>
     <% end %>
+    <div class="item-details">
+        <div class="item-info">
+            <%= item.description %>
+        </div>
+        <div class="item-image">
+            <%= display_first_image(item) %>
+        </div>
+    </div>
     <hr>
 </div>

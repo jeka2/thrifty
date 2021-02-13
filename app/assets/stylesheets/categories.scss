@@ -27,6 +27,22 @@
     content: "X";
 }
 
+.item-container {
+    width: 70%;
+    margin: auto;
+}
+
+.item-container > .item-details {
+    display: flex;
+}
+
+.item-pagination {
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    transform: translate(-50%);
+}
+
 .item-pagination a{
     color: black;
     float: left;

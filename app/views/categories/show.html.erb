@@ -1,5 +1,3 @@
 Description: <%= @category.description %><br>
-<% @category.items.each do |item| %>
-    <%= link_to item.name, item_path(item) %><br>
-    <%= item.description.truncate(50) %><br>
-<% end %>
+<%= render partial: 'items/single', collection: @items, as: :item %>
+<%= paginate_buttons(@category, @per_page, @page) %>

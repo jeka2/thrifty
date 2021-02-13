@@ -2,6 +2,7 @@
     <%= link_to "Home", root_path, class: "navbar-brand" %>
     <div class="nav-item navbar-nav"><a href="#">Departments</a></div>
     <%= link_to "make item", new_user_item_path(current_user) if logged_in? %>
+    <%= link_to "Search Categories", search_categories_path, class:['nav-item', 'navbar-nav'] %>
     <form id="form-inline" class="form-inline">
         <input id="form-control" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
