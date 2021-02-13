@@ -1,22 +1,30 @@
 const maxQuantity = parseInt(document.getElementById('quantity').innerText);
 const cartForm = document.getElementById('cart-form');
 const cartButton = document.getElementById('cart-button');
+const purchaseForm = document.getElementById('purchase-form');
+const purchaseButton = document.getElementById('purchase-button');
 let mainQuantityDiv;
 
 document.addEventListener('mousedown', (e) => {
-    console.log(e)
-    if (mainQuantityDiv != 'undefined' && !e.path.includes(cartForm)) {
+    if (mainQuantityDiv != 'undefined' && !(e.path.includes(cartForm) || e.path.includes(purchaseForm))) {
         removeQuantitySelect();
     }
 });
 
-cartButton.addEventListener('mouseenter', (e) => {
-    if (!document.querySelector('#quantity-input') && maxQuantity !== 0) { appendQuantitySelect(); }
+purchaseButton.addEventListener('mouseenter', (e) => {
+    if (document.querySelector('.cart-input')) { removeQuantitySelect(); }
+    if (!document.querySelector('.purchase-input') && maxQuantity !== 0) { appendQuantitySelect('purchase'); }
 });
 
-function appendQuantitySelect() {
+cartButton.addEventListener('mouseenter', (e) => {
+    if (document.querySelector('.purchase-input')) { removeQuantitySelect(); }
+    if (!document.querySelector('.cart-input') && maxQuantity !== 0) { appendQuantitySelect('cart'); }
+});
+
+function appendQuantitySelect(designation) {
     mainQuantityDiv = document.createElement('div');
     mainQuantityDiv.id = 'quantity-input';
+    mainQuantityDiv.classList.add(`${designation}-input`);
 
     quantityFields = document.createElement('div');
     quantityFields.classList.add('quantity-fields');
@@ -37,7 +45,12 @@ function appendQuantitySelect() {
 
     mainQuantityDiv.appendChild(quantityFields);
 
-    cartForm.appendChild(mainQuantityDiv);
+    if (designation === 'cart') {
+        cartForm.appendChild(mainQuantityDiv);
+    }
+    else {
+        purchaseForm.appendChild(mainQuantityDiv);
+    }
 }
 
 function removeQuantitySelect() {

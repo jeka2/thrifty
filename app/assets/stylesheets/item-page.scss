@@ -16,6 +16,7 @@
 
 #purchase-options {
     flex: 1;
+    position: relative;
 }
 
 #buy-button {
@@ -36,11 +37,23 @@
     width: 100px;
 }
 
-#cart-form {
-    position: relative;
+#purchase-form {
+    position: absolute;
+    top: 10px;
+}
+
+#cart-form, #visit-button {
+    position: absolute;
+    top: 120px;
 }
 
 #cart-button {
+    position: absolute;
+    width: 100px;
+    left: 0;
+}
+
+#purchase-button {
     position: absolute;
     width: 100px;
     left: 0;

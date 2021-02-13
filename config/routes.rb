@@ -33,5 +33,7 @@ Rails.application.routes.draw do
 
   match '/auth/:google_oauth2/callback', to: 'sessions#google', via: [:get, :post]
 
+  get '/confirmation', to: 'static#confirmation', as: 'confirmation_page'
+
   root 'static#home'
 end

@@ -20,8 +20,8 @@
                 </div>
                 <% if logged_in? %>
                     <div id="purchase-options">
-                        <a id="buy-button" class="btn btn-primary" href="#">Buy Now</a>
-                        <br>
+                        <%= render partial: 'purchases/form', locals: { item_id: @item.id } %>
+
                         <% if already_in_cart?(@item) %>
                             <%= render partial: 'cart_items/visit_button', locals: { item_id: @item.id } %>
                         <% else %>

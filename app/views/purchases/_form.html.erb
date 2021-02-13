@@ -1,0 +1,5 @@
+<%= form_tag "/users/#{current_user.id}/purchase", id: 'purchase-form', method: 'post' do %>
+    <%= hidden_field_tag :item_id, item_id %>
+    <%= hidden_field_tag :user_id, current_user.id %>
+    <%= submit_tag 'Purchase', id:'purchase-button', class:['btn', 'btn-primary'] %>
+<% end %>

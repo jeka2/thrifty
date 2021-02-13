@@ -30,10 +30,7 @@ module ItemsHelper
             end
         end
     end
-
-    def quantity_in_cart(cart_id, item_id)
-        CartItem.find_by(cart_id: cart_id, item_id: item_id).quantity
-    end
+    
 protected
     def get_image_urls(target_item:,type:nil)
         path_urls = Array.new
