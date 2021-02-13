@@ -1,0 +1,16 @@
+<% if flash_present? %>
+    <ul id="flash">
+        <% flash_types.each do |type_hash| %>
+            <% type_hash.each do |key, mssgs| %>
+                <% mssgs.each do |mssg| %>
+                    <% if key == :notice %>
+                        <li class="alert alert-info"><%= mssg %></li>
+                    <% elsif key == :alert %>
+                        <li class="alert alert-warning"><%= mssg %></li>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% end %>
+    </ul>
+    <% empty_flash %>
+<% end %>

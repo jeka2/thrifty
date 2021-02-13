@@ -24,8 +24,6 @@ class UsersController < ApplicationController
             set_flash_alert_for(@user)
 
             render :new
-
-            remove_flash_alert
         end
     end
 

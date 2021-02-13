@@ -1,4 +1,8 @@
 module CartHelper
+    def already_in_cart?(item)
+        CartItem.find_by(cart_id: current_user.cart.id, item_id: item.id)
+    end
+    
     def quantity_in_cart(cart_id, item_id)
         CartItem.find_by(cart_id: cart_id, item_id: item_id).quantity
     end
@@ -26,9 +30,5 @@ module CartHelper
             result += total_price
         end
         result
-    end
-
-    def already_in_cart?(item)
-        CartItem.find_by(cart_id: current_user.cart.id, item_id: item.id)
     end
 end

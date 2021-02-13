@@ -29,10 +29,6 @@ private
         flash[:alert] = obj.errors.full_messages
     end
 
-    def remove_flash_alert
-        flash[:alert] = nil
-    end
-
     def admin?
         current_user.role == 'admin' if current_user
     end

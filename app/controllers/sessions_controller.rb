@@ -15,8 +15,6 @@ class SessionsController < ApplicationController
             flash[:alert] = ["Wrong Credentials"]
 
             render :new
-
-            remove_flash_alert
         end
     end
 

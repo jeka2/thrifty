@@ -10,8 +10,6 @@ toggler.addEventListener('click', (e) => {
     let canPopulate = true;
 
     for (let i = 0; i < categoriesToPopulate.options.length; i++) {
-        console.log(selectedOption)
-        console.log(categoriesToPopulate.options)
         if (selectedOption.value === categoriesToPopulate.options[i].value) {
             canPopulate = false;
         }

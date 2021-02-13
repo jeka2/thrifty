@@ -25,13 +25,13 @@ class ItemsController < ApplicationController
         item.creator_id = current_user.id
 
         if item.save 
+            flash[:notice] = ["Item created successfully"]
+
             redirect_to user_items_path(current_user)
         else
             set_flash_alert_for(item)
 
             render :new
-
-            remove_flash_alert
         end
     end
 
@@ -49,8 +49,6 @@ class ItemsController < ApplicationController
             set_flash_alert_for(@item)
 
             render :edit
-            
-            remove_flash_alert
         end
     end
 

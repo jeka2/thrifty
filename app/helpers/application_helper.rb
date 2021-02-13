@@ -1,11 +1,18 @@
 module ApplicationHelper
-    def display_flash
-        if flash[:alert] && !flash[:alert].empty?
-            content_tag(:ul, class: 'errors') do 
-                flash[:alert].each do |mssg|
-                    concat content_tag(:li, mssg, class: 'error')
-                end
-            end
+    def flash_present?
+        (flash[:alert] && !flash[:alert].empty?) || (flash[:notice] && !flash[:notice].empty?)
+    end
+
+    def flash_types
+        types = []
+        types << { 'alert': flash[:alert] } if flash[:alert] && !flash[:alert].empty? 
+        types << { 'notice': flash[:notice] } if flash[:notice] && !flash[:notice].empty?
+        types
+    end
+
+    def empty_flash
+        flash_types.each do |type|
+            type.each { |key, value| type[key] == [] }
         end
     end
 

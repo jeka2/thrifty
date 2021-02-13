@@ -22,8 +22,6 @@ class DepartmentsController < ApplicationController
             set_flash_alert_for(department)
 
             redirect_to departments_path
-
-            remove_flash_alert
         end
     end
 
@@ -39,8 +37,6 @@ class DepartmentsController < ApplicationController
             set_flash_alert_for(department)
 
             redirect_to departments_path
-
-            remove_flash_alert
         end
     end
 
