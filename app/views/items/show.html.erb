@@ -30,7 +30,7 @@
     </div>
 
     <div id="comment-section">
-        <%= render partial: 'comments/form' %>
+        <%#= render partial: 'comments/form' %>
         <div id="comments">
             <%= render partial: 'comments/comment', collection: comment_roots(@item.id), as: :comment, locals: { item_id: @item.id } %>
         </div>
