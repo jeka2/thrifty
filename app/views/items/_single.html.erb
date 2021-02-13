@@ -1,3 +1,7 @@
-<% item.categories.each do |cat| %>
-    <%= cat.name %><br>
-<% end %>
+<div class="item-container">
+    <span><h3><%= link_to item.name, item_path(item.id) %></h3></span>
+    <% item.categories.each do |cat| %>
+        <span><%= cat.name %></span>
+    <% end %>
+    <hr>
+</div>

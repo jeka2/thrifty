@@ -13,7 +13,18 @@ module ApplicationHelper
         criteria = (resource.created_at == resource.updated_at) ? "Created" : "Updated"
         resource.updated_at.strftime("#{criteria} at %I:%M%p %m/%d/%Y")
     end
+    
+    # No refresh required
+    def paginate(resource, per_page, params)
+        number_of_pages = (resource.count % per_page) > 0 ? resource.count / per_page + 1 : resource.count / per_page
+        content_tag(:div, class: ['pagination', 'item-pagination']) do 
+            1.upto(number_of_pages) do |i|
+                concat link_to(i, query_categories_path(:category_ids => params, :page => i), method: 'POST', remote: true)
+            end
+        end
+    end
 
+    # Refresh required
     def paginate_buttons(category, per_page, current_page)
         current_page = current_page.to_i
         items = category.items
