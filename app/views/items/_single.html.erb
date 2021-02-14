@@ -5,7 +5,9 @@
     <% end %>
     <div class="item-details">
         <div class="item-info">
-            <%= item.description %>
+            <%= item.description %><br>
+            <%= link_to "Edit Item", edit_user_item_path(item.creator_id, item), 
+                class:['btn', 'btn-warning'] if logged_in? && item.creator_id == current_user.id %>
         </div>
         <div class="item-image">
             <%= display_first_image(item) %>

@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :departments, only: [:index, :show]
+  resources :query_items, only: [:create]
 
   get 'categories/search', to: 'categories_search#new', as: 'search_categories'
   post 'categories/search', to: 'categories_search#create', as: 'query_categories'

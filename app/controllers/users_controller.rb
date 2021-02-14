@@ -8,6 +8,9 @@ class UsersController < ApplicationController
     def show 
         @user = User.find_by_id(params[:id])
         redirect_to root_path unless @user
+        @per_page = 10
+        @items = @user.items
+        @first_page_items = @user.items.last(@per_page)
     end
 
     def new 

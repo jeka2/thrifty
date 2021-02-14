@@ -1,4 +1,17 @@
-<%= @user.email %>
-<div class="container user-items-container">
-        <%= display_user_image_slideshow @user %>
-</div>
+<% if @user != current_user %>
+   <div class="container user-items-container">
+      <p>Some of the users recent additions: </p>
+      <%= display_user_image_slideshow @user %>
+   </div>
+<% end %>
+<% if !@first_page_items.empty? %>
+   <%= form_tag '/query_items', remote: true, id:'search-form' do %>
+        <%= hidden_field_tag :user_id, @user.id %>
+        <%= text_field_tag :q, nil, placeholder: 'Search Items By Name' %>
+        <%= submit_tag 'Refine' %>
+   <% end %>
+   <div id="search-results">
+      <%= render partial: 'items/single', collection: @first_page_items, as: :item %>
+   </div>
+   <%= paginate_buttons(@items, @per_page, 1, nil, true) %>
+<% end %>
