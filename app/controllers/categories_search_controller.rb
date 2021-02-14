@@ -6,7 +6,7 @@ class CategoriesSearchController < ApplicationController
     end
 
     def create
-        @categories = params[:category_ids]
+        @categories = params[:item][:category_ids]
         if @categories
             querried_items = get_queried_items(@categories[0..2])
             @items = Item.where(id: querried_items).order_as_specified(id: querried_items) # Order by relevance

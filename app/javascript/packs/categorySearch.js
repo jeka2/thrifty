@@ -1,7 +1,15 @@
 const categories = document.getElementById('category-select');
 const optionsToPopulate = document.getElementById('selected-options-list');
-const submitButton = document.getElementById('submit-button');
 categories.selectedIndex = -1;
+
+// When updating, categories that are aleady attributed
+// To the item
+let existingCategories = document.querySelectorAll('.category');
+for (let i = 0; i < existingCategories.length; i++) {
+    let li = existingCategories[i];
+    let checkbox = existingCategories[i].childNodes[4];
+    removeOnUncheck(checkbox, li);
+}
 
 categories.addEventListener('change', (e) => {
     let selectedOption = categories.options[categories.selectedIndex];
@@ -14,7 +22,7 @@ categories.addEventListener('change', (e) => {
     categoryName.classList.add('category-name');
 
     checkbox.type = 'checkbox';
-    checkbox.name = 'category_ids[]';
+    checkbox.name = 'item[category_ids][]';
     checkbox.value = selectedOption.value;
     checkbox.classList.add('category-checkbox');
     checkbox.checked = true;

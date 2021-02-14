@@ -16,8 +16,20 @@
         <%= f.text_area :description %>
     </div>
     <div class="form-group">
-        <%= f.label "Choose from department" %>
-        <%= f.collection_select :category_ids, Category.order(:name), :id, :name %>
+        <%= f.label 'Select from up to 3 categories' %>
+        <%= render partial: 'categories/select' %>
+        <div id="selected-options">
+            <ul name='category_ids' id="selected-options-list">
+                <% if @item && !@item.categories.empty? %>
+                    <% @item.categories.each do |category| %>
+                        <li id="<%= category.id %>" class="category" data-children-count="1">
+                            <p class="category-name"><%= category.name %></p>
+                            <%= check_box("item", "category_ids", { multiple: true, class:'category-checkbox', id:"item_category_ids_#{category.id}", checked: true }) %>
+                        </li>
+                    <% end %>
+                <% end %>
+            </ul>
+        </div>
     </div>
     <div class="form-group">
         <%= f.label "Choose from department" %>
@@ -28,3 +40,7 @@
     </div>
     <%= f.submit @item ? 'Update Item' : 'Create Item', id: 'submit-button' %>
 <% end %>
+
+<%= javascript_pack_tag 'categorySearch' %>
+
+<input type="checkbox" name="item[category_ids][]" value="5" class="category-checkbox">

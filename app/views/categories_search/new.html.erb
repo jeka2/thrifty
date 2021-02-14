@@ -1,9 +1,4 @@
-<select id="category-select">
-    <% @categories.each do |category| %>
-        <option value="<%= category.id %>"><%= category.name %></option>
-    <% end %>
-</select>
-
+<%= render partial: 'categories/select' %>
 <%= form_tag query_categories_path, remote: true do %>
     <div id="selected-options">
         <ul name='category_ids' id="selected-options-list">
