@@ -6,7 +6,7 @@ class CategoriesSearchController < ApplicationController
     end
 
     def create
-        @categories = params[:item][:category_ids]
+        @categories = params[:item][:category_ids] || params[:category_ids]
         if @categories
             querried_items = get_queried_items(@categories[0..2])
             @items = Item.where(id: querried_items).order_as_specified(id: querried_items) # Order by relevance
@@ -16,7 +16,7 @@ class CategoriesSearchController < ApplicationController
         end
 
         @per_page = 10
-        @items = @items.paginate(page: params[:page], per_page: @per_page)
+        @items = @items.paginate(page: params[:page] || 1, per_page: @per_page)
         
         respond_to do |format|
             format.html { redirect_to root_path }

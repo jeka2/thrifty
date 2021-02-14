@@ -32,6 +32,10 @@
     margin: auto;
 }
 
+#category-prompt {
+    font-weight: 700;
+}
+
 .item-container > .item-details {
     display: flex;
 }
@@ -39,6 +43,7 @@
 .item-pagination {
     position: absolute;
     margin: auto;
+    margin-bottom: 50px;
     left: 50%;
     transform: translate(-50%);
 }

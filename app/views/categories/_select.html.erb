@@ -1,3 +1,4 @@
+<p id="category-prompt">Please select from up to 3 categories:</p>
 <select id="category-select">
     <% Category.all.each do |category| %>
         <option value="<%= category.id %>"><%= category.name %></option>
