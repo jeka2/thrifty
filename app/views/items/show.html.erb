@@ -1,3 +1,5 @@
+<%= @item.creator_id %>
+<%= current_user.id %>
 <div id="item-page">
     <div id="info-section">
         <%= display_image_slideshow(@item) %>
@@ -18,7 +20,11 @@
                     <h4 id="item-rating"><%= @item.rating %></h4>
                     <h4 id="item-quantity"><div id="quantity"><%= @item.quantity %></div> Available In Stock</h4>
                 </div>
-                <% if logged_in? %>
+                <% if logged_in? && current_user.id == @item.creator_id %>
+                    <div id="item-edit-options">
+                        <%= link_to "Edit Item", edit_user_item_path(current_user, @item), class:['btn', 'btn-warning'] %>
+                    </div>
+                <% elsif logged_in? %>
                     <div id="purchase-options">
                         <%= render partial: 'purchases/form', locals: { item_id: @item.id } %>
 

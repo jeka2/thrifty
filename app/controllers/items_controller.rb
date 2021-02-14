@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
     before_action :home_unless_logged_in, except: [:show, :index]
-    before_action :set_item, only: [:show, :edit, :update, :delete]
-    before_action :authorized_to_edit?, only: [:edit, :update, :delete]
+    before_action :set_item, only: [:show, :edit, :update, :destroy]
+    before_action :authorized_to_edit?, only: [:edit, :update, :destroy]
 
     def index
         if params[:user_id]
@@ -52,9 +52,6 @@ class ItemsController < ApplicationController
         end
     end
 
-    def destroy
-        binding.pry
-    end
 
 private 
     def set_item
