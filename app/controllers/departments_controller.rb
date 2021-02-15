@@ -6,9 +6,12 @@ class DepartmentsController < ApplicationController
 
     def show
         @department = Department.find_by_id(params[:id])
-        unless @department
-            flash[:alert] = ["Such department doesn't exist"]
-        end
+        @items = @department.items if @department
+        @per_page = 10
+
+        @page = params[:page] || 1
+
+        @items = @items.paginate(page: @page, per_page: @per_page)
     end
 
     def new

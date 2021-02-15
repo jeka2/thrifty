@@ -70,11 +70,17 @@ protected
               request_type: :post    
             }
         elsif type == :category
-            binding.pry
             { path: 'category_path',
               options: {
                     :id => type_hash[type]
               }  
+            }
+        elsif type == :department
+            {
+              path: 'department_path',
+              options: {
+                    :id => type_hash[type]
+              }
             }
         end
     end

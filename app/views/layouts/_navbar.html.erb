@@ -1,6 +1,6 @@
 <div id="navbar">
     <%= link_to "Home", root_path, class: "navbar-brand" %>
-    <div class="nav-item navbar-nav"><a href="#">Departments</a></div>
+    <%= link_to "Departments", departments_path, class:['nav-item', 'navbar-nav'] %>
     <%= link_to "Make Item", new_user_item_path(current_user), class:['nav-item', 'navbar-nav'] if logged_in? %>
     <%= link_to "Search Categories", search_categories_path, class:['nav-item', 'navbar-nav'] %>
     <form id="form-inline" class="form-inline">
