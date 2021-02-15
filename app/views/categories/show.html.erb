@@ -1,3 +1,4 @@
+Name: <%= @category.name %><br>
 Description: <%= @category.description %><br>
 <%= render partial: 'items/single', collection: @items, as: :item %>
-<%= paginate_buttons(@category, @per_page, @page) %>
+<%= paginate_buttons(@items, @per_page, @page, {'category': @category.id } ) %>

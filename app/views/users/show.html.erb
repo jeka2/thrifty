@@ -13,5 +13,5 @@
    <div id="search-results">
       <%= render partial: 'items/single', collection: @first_page_items, as: :item %>
    </div>
-   <%= paginate_buttons(@items, @per_page, 1, nil, true) %>
+   <%= paginate_buttons(@items, @per_page, 1, { 'user': @user.id }, nil, true) %>
 <% end %>

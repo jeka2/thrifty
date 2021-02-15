@@ -1,4 +1,4 @@
 document.getElementById('search-results').innerHTML = '';
 document.querySelector('.pagination').remove();
 document.getElementById('search-results').insertAdjacentHTML("afterBegin", "<%=j render partial: 'items/single', collection: @items, as: :item %>");
-document.getElementById('search-results').insertAdjacentHTML("afterEnd", "<%=j paginate_buttons(@querried_items, @per_page, @current_page, @query, true) %>");
+document.getElementById('search-results').insertAdjacentHTML("afterEnd", "<%=j paginate_buttons(@querried_items, @per_page, @current_page, { 'user': @user.id }, @query, true) %>");

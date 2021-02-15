@@ -34,24 +34,48 @@ module ApplicationHelper
     # If the search needs to be refined on a page foreign to the item, the whole
     # page shouldn't be refreshed. For example, if looking up items of a particular user
     # on the user's page, the whole page shouldn't reload if the items are filtered
-    def paginate_buttons(resources, per_page, current_page, query=nil, remote=false)
+    def paginate_buttons(resources, per_page, current_page, type_hash, query=nil, remote=false)
         current_page = current_page.to_i
-        items = resources
-        number_of_pages = items.count % per_page > 0 ? items.count / per_page + 1 : items.count / per_page
+        request_params = get_params(type_hash, query)
+
+        number_of_pages = resources.count % per_page > 0 ? resources.count / per_page + 1 : resources.count / per_page
         numbered_links = number_of_pages < 10 ? number_of_pages : 10 # The amount on numbered links to be dipslayed. ex: 1..10, 15..25
-        max_page = ((current_page + numbered_links - 1) * per_page) <= items.count ? current_page + numbered_links - 1 : number_of_pages
+        max_page = ((current_page + numbered_links - 1) * per_page) <= resources.count ? current_page + numbered_links - 1 : number_of_pages
 
         lower_limit = current_page - 5 > 1 ? current_page - 5 : 1
         upper_limit = current_page + 5 > max_page ? max_page : current_page + 5
 
         content_tag(:div, class: ['pagination', 'item-pagination']) do 
-            concat link_to("Previous", Rails.application.routes.url_helpers.send('query_items_path', { :page => current_page - 1, :user_id => resources.first.creator_id, :q => query}), method: :post, remote: remote) if current_page > 1
+            request_params[:options][:page] = current_page - 1
+            concat link_to("Previous", Rails.application.routes.url_helpers.send(request_params[:path], request_params[:options]), method: request_params[:request_type], remote: remote) if current_page > 1
+
             (lower_limit).upto(upper_limit) do |i|
-                concat link_to(i, Rails.application.routes.url_helpers.send('query_items_path', { :page => i, :user_id => resources.first.creator_id, :q => query}), method: :post, remote: remote)
+                request_params[:options][:page] = i
+                concat link_to(i, Rails.application.routes.url_helpers.send(request_params[:path], request_params[:options]), method: request_params[:request_type], remote: remote)
             end
-            concat link_to("Next", Rails.application.routes.url_helpers.send('query_items_path', { :page => current_page + 1, :user_id => resources.first.creator_id, :q => query}), method: :post, remote: remote) if current_page != max_page
+
+            request_params[:options][:page] = current_page + 1
+            concat link_to("Next", Rails.application.routes.url_helpers.send(request_params[:path], request_params[:options]), method: request_params[:request_type], remote: remote) if current_page != max_page
         end
     end 
+protected
+    def get_params(type_hash, query)
+        type = type_hash.keys.first
+        if type == :user
+            { path: 'query_items_path',
+              options: { 
+                    :user_id => type_hash[type],
+                    :q => query
+                },
+              request_type: :post    
+            }
+        elsif type == :category
+            binding.pry
+            { path: 'category_path',
+              options: {
+                    :id => type_hash[type]
+              }  
+            }
+        end
+    end
 end
-#Rails.application.routes.url_helpers.user_item_path(1,1, method: :post, remote: true)
-#Rails.application.routes.url_helpers.send('query_items_path', { :blah => :blah })
