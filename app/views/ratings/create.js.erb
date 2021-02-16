@@ -1,2 +1,5 @@
 document.getElementById('rating').innerText = <%= '%.2f' % @new_rating %>
-document.getElementById('ratings-count').innerText = <%= @new_ratings_count %>
+document.getElementById('item-rating').innerHTML = "";
+document.getElementById('item-rating').insertAdjacentHTML("afterBegin", "<%=j rating(@item, true) %>")
+
+
