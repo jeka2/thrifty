@@ -1,3 +1,3 @@
 Department Name: <%= @department.name %><br>
 <%= render partial: 'items/single', collection: @items, as: :item %>
-<%= paginate_buttons(@items, @per_page, @page, { 'department': @department.id }) %>
+<%= paginate_buttons(@all_items, @per_page, @page, { 'department': @department.id }) %>

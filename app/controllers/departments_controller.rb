@@ -10,7 +10,7 @@ class DepartmentsController < ApplicationController
         @per_page = 10
 
         @page = params[:page] || 1
-
+        @all_items = @items
         @items = @items.paginate(page: @page, per_page: @per_page)
     end
 

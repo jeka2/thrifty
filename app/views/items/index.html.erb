@@ -1,4 +1,2 @@
-<% @items.each do |item| %>
-    <%= link_to item.name, item_path(item) %> - <%= item.price %>
-    <%= modify_options_for item %><br>
-<% end %>
+<%= render partial: 'single', collection: @items, as: :item %>
+<%= paginate_buttons(@all_items, @per_page, @page, { 'user': @user.id, 'item': 'index' }) %>

@@ -77,14 +77,25 @@ module ApplicationHelper
 protected
     def get_params(type_hash, query)
         type = type_hash.keys.first
+        nested_type = type_hash.keys[1] # /users/1/items 'item' is the nested type
         if type == :user
-            { path: 'query_items_path',
-              options: { 
-                    :user_id => type_hash[type],
-                    :q => query
-                },
-              request_type: :post    
-            }
+            if nested_type 
+                if nested_type == :item
+                    { path: 'user_items_path',
+                      options: {
+                          :user_id => type_hash[type]
+                      }
+                    }
+                end
+            else
+                { path: 'query_items_path',
+                options: { 
+                        :user_id => type_hash[type],
+                        :q => query
+                    },
+                request_type: :post    
+                }
+            end
         elsif type == :category
             { path: 'category_path',
               options: {
