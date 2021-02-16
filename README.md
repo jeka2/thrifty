@@ -1,5 +1,4 @@
-# Snap-Book
-
+# Thrifty
 Thrifty is your new, premier go to destination for all your second hand shopping needs. The application includes the abilities to sell and purchase products and considering the nature of the application and the needs it meets, searching for exactly what you need has never been easier! This is due to the fact that you can specify the exact categories you would like to find in an item, and you'll receive the best matches! 
 
 ## Installation
