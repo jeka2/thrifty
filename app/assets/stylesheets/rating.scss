@@ -1,0 +1,19 @@
+.star {
+    display: inline-block;
+    color: black;
+    font-size: 30px;
+    color: rgba(224, 166, 6, 0.507);
+}
+
+.star.filled {
+    color: rgb(86, 77, 219);
+}   
+
+.star:hover {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#rating, #ratings-count {
+    display: inline-block;
+}

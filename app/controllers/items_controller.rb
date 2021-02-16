@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
     end
 
     def show
+        @already_rated = !!Rating.find_by(item_id: @item.id, user_id: current_user.id) if logged_in?
     end
 
     def edit
@@ -56,6 +57,12 @@ class ItemsController < ApplicationController
 private 
     def set_item
         @item = Item.find_by_id(params[:id])
+
+        if !@item
+            flash[:alert] = ["No such item"]
+
+            redirect_to root_path
+        end
     end
 
     def authorized_to_edit?

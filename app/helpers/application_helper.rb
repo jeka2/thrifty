@@ -3,6 +3,20 @@ module ApplicationHelper
         (flash[:alert] && !flash[:alert].empty?) || (flash[:notice] && !flash[:notice].empty?)
     end
 
+    def rating(item, already_rated)
+        content_tag(:div, id:'ratings-container') do 
+            1.upto(5) do |i|
+                if already_rated
+                    concat link_to item.rating >= i ? '★' : '☆', update_rating_path(item, :star => i), method: :post, class:'star', remote: true
+                else 
+                    concat link_to item.rating >= i ? '★' : '☆', create_rating_path(:item_id => item.id, :star => i), method: :post, class:'star', remote: true
+                end
+            end
+            concat content_tag :p,'%.2f' % item.rating, id:'rating'
+            concat content_tag :p, "(#{item.ratings_count})", id:'ratings-count'
+        end
+    end 
+
     def flash_types
         types = []
         types << { 'alert': flash[:alert] } if flash[:alert] && !flash[:alert].empty? 

@@ -37,5 +37,8 @@ Rails.application.routes.draw do
 
   get '/confirmation', to: 'static#confirmation', as: 'confirmation_page'
 
+  post '/create_rating', to: 'ratings#create', as: 'create_rating'
+  post '/update_rating/:id', to: 'ratings#update', as: 'update_rating'
+
   root 'static#home'
 end

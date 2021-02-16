@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_10_000710) do
+ActiveRecord::Schema.define(version: 2021_02_15_051409) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2021_02_10_000710) do
     t.string "name"
     t.text "description"
     t.decimal "rating"
+    t.integer "ratings_count"
     t.string "images"
     t.integer "creator_id", null: false
     t.integer "department_id", null: false
@@ -113,6 +114,16 @@ ActiveRecord::Schema.define(version: 2021_02_10_000710) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["creator_id"], name: "index_items_on_creator_id"
     t.index ["department_id"], name: "index_items_on_department_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "user_id", null: false
+    t.integer "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_ratings_on_item_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -135,4 +146,6 @@ ActiveRecord::Schema.define(version: 2021_02_10_000710) do
   add_foreign_key "comments", "users"
   add_foreign_key "items", "departments"
   add_foreign_key "items", "users", column: "creator_id"
+  add_foreign_key "ratings", "items"
+  add_foreign_key "ratings", "users"
 end

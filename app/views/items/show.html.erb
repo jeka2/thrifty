@@ -1,5 +1,3 @@
-<%= @item.creator_id %>
-<%= current_user.id %>
 <div id="item-page">
     <div id="info-section">
         <%= display_image_slideshow(@item) %>
@@ -7,7 +5,7 @@
             <div id="categories">
                 <% if @item.categories %>
                     <% @item.categories.each do |category| %>
-                        <%= link_to category.name, show_category_path(category.id) %>
+                        <%= link_to category.name, category_path(category.id) %>
                     <% end %>
                 <% end %>
             </div>
@@ -17,7 +15,7 @@
                 <div id="about-item">
                     <h4 id="item-description"><%= @item.description %><br></h4>
                     <h4 id="item-price"><%= @item.price %>$</h4>
-                    <h4 id="item-rating"><%= @item.rating %></h4>
+                    <h4 id="item-rating"><%= render partial: 'rating' %></h4>
                     <h4 id="item-quantity"><div id="quantity"><%= @item.quantity %></div> Available In Stock</h4>
                 </div>
                 <% if logged_in? && current_user.id == @item.creator_id %>

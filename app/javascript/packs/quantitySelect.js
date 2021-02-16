@@ -6,20 +6,24 @@ const purchaseButton = document.getElementById('purchase-button');
 let mainQuantityDiv;
 
 document.addEventListener('mousedown', (e) => {
-    if (mainQuantityDiv != 'undefined' && !(e.path.includes(cartForm) || e.path.includes(purchaseForm))) {
-        removeQuantitySelect();
+    if (mainQuantityDiv != 'undefined' && (purchaseButton || cartButton) && !(e.path.includes(cartForm) || e.path.includes(purchaseForm))) {
+        if (mainQuantityDiv) { removeQuantitySelect(); }
     }
 });
 
-purchaseButton.addEventListener('mouseenter', (e) => {
-    if (document.querySelector('.cart-input')) { removeQuantitySelect(); }
-    if (!document.querySelector('.purchase-input') && maxQuantity !== 0) { appendQuantitySelect('purchase'); }
-});
+if (purchaseButton) {
+    purchaseButton.addEventListener('mouseenter', (e) => {
+        if (document.querySelector('.cart-input')) { removeQuantitySelect(); }
+        if (!document.querySelector('.purchase-input') && maxQuantity !== 0) { appendQuantitySelect('purchase'); }
+    });
+}
 
-cartButton.addEventListener('mouseenter', (e) => {
-    if (document.querySelector('.purchase-input')) { removeQuantitySelect(); }
-    if (!document.querySelector('.cart-input') && maxQuantity !== 0) { appendQuantitySelect('cart'); }
-});
+if (cartButton) {
+    cartButton.addEventListener('mouseenter', (e) => {
+        if (document.querySelector('.purchase-input')) { removeQuantitySelect(); }
+        if (!document.querySelector('.cart-input') && maxQuantity !== 0) { appendQuantitySelect('cart'); }
+    });
+}
 
 function appendQuantitySelect(designation) {
     mainQuantityDiv = document.createElement('div');
