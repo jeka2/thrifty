@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     post '/purchase', to: 'purchases#create', as: 'make_purchase'
   end
 
+  get 'categories/search', to: 'categories_search#new', as: 'search_categories'
+
   resources :categories, only: [:show]
   resources :departments, only: [:index, :show]
 
@@ -21,7 +23,6 @@ Rails.application.routes.draw do
 
   resources :query_items, only: [:create]
 
-  get 'categories/search', to: 'categories_search#new', as: 'search_categories'
   post 'categories/search', to: 'categories_search#create', as: 'query_categories'
 
 

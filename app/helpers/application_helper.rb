@@ -13,7 +13,9 @@ module ApplicationHelper
                 end
             end
             concat content_tag :p,'%.2f' % item.rating, id:'rating'
-            concat content_tag :p, "(#{item.ratings_count})", id:'ratings-count'
+            concat '('
+            concat content_tag :p, "#{item.ratings_count}", id:'ratings-count'
+            concat ')'
         end
     end 
 

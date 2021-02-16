@@ -7,7 +7,7 @@ categories.selectedIndex = -1;
 let existingCategories = document.querySelectorAll('.category');
 for (let i = 0; i < existingCategories.length; i++) {
     let li = existingCategories[i];
-    let checkbox = existingCategories[i].childNodes[4];
+    let checkbox = li.childNodes[3];
     removeOnUncheck(checkbox, li);
 }
 
@@ -26,6 +26,8 @@ categories.addEventListener('change', (e) => {
     checkbox.value = selectedOption.value;
     checkbox.classList.add('category-checkbox');
     checkbox.checked = true;
+
+    console.log(checkbox)
 
     listItemToAppend.appendChild(categoryName);
     listItemToAppend.appendChild(checkbox);

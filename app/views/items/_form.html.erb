@@ -23,7 +23,7 @@
                     <% @item.categories.each do |category| %>
                         <li id="<%= category.id %>" class="category" data-children-count="1">
                             <p class="category-name"><%= category.name %></p>
-                            <%= check_box("item", "category_ids", { multiple: true, class:'category-checkbox', id:"item_category_ids_#{category.id}", checked: true }) %>
+                            <%= check_box_tag("item[category_ids][]", category.id, true, class:'category-checkbox') %>
                         </li>
                     <% end %>
                 <% end %>
@@ -41,5 +41,3 @@
 <% end %>
 
 <%= javascript_pack_tag 'categorySearch' %>
-
-<input type="checkbox" name="item[category_ids][]" value="5" class="category-checkbox">

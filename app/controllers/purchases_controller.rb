@@ -3,7 +3,6 @@ class PurchasesController < ApplicationController
     before_action :authenticate
 
     def create
-        binding.pry
         if params[:from_cart] # Request came from cart
             make_purchase
 

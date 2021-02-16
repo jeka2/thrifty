@@ -1,9 +1,10 @@
 class RatingsController < ApplicationController
     include RatingsHelper
+    before_action :log_in_if_not
     def create
         item = Item.find_by_id(params[:item_id])
         star_count = params[:star].to_i
-
+        
         Rating.create(user_id: current_user.id, item_id: item.id, score: star_count)
 
         update_rating(item: item, old_score: 0, new_score: star_count, new_record:true)
@@ -33,6 +34,10 @@ class RatingsController < ApplicationController
             format.html { redirect_to root_path }
             format.js
         end 
+    end
+private 
+    def log_in_if_not
+        redirect_to user_login_path if !logged_in?
     end
 
 end

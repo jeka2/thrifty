@@ -7,7 +7,7 @@
         <input id="form-control" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
-    <div class="nav-item navbar-nav"><a href="#">My Profile</a></div>
+    <%= link_to "My Profile", user_path(current_user), class:['nav-item', 'navbar-nav'] if logged_in? %>
     <%= link_to "Cart", user_show_cart_path(current_user), class:['nav-item', 'cart-href'] if logged_in? %>
     <% if current_user %>
         <div class="nav-item logout-href"><%= link_to "Log Out", logout_path %></div>
